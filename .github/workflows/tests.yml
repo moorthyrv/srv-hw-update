@@ -23,3 +23,12 @@ jobs:
         run: |
           fwtool --version
           fwtool catalog import tests/fixtures/dell_catalog.xml --cache-dir smoke-cache
+      - name: PowerShell script syntax (Windows PowerShell 5.1 and 7)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $check = '$e=$null; [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path scripts/pilot-setup.ps1), [ref]$null, [ref]$e); if ($e) { $e | ForEach-Object { Write-Error $_.ToString() }; exit 1 } else { "parse OK: $($PSVersionTable.PSVersion)" }'
+          pwsh -NoProfile -Command $check
+          if ($LASTEXITCODE) { exit 1 }
+          powershell -NoProfile -Command $check
+          if ($LASTEXITCODE) { exit 1 }

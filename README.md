@@ -35,6 +35,11 @@ pip install -e .
 fwtool --version
 ```
 
+**Guided setup on a Windows server:** copy `scripts/pilot-setup.ps1` to the server and run
+`powershell -ExecutionPolicy Bypass -File .\pilot-setup.ps1`. It checks Python and Git, clones or
+updates this branch, installs fwtool, gets the Dell catalog, helps you fill in `pilot.csv`, checks port 443
+to each BMC and runs the pilot. It pauses after every step.
+
 Credentials for the session (they vanish when the window closes):
 
 ```powershell
