@@ -98,6 +98,10 @@ fwtool inventory -i cmdb_export.csv --baselines baselines.yaml
 # Interrupted? Continue the same run; servers already collected are skipped, failed ones retried
 fwtool inventory -i cmdb_export.csv --resume runs/20260927-101500
 
+# Check the newest run for gaps and problems (no BMC traffic); --share masks names and IPs
+fwtool validate
+fwtool validate --share
+
 # Re-analyse a finished run after updating the catalog / reference / baselines (no BMC traffic)
 fwtool report --run-dir runs/20260927-101500 --baselines baselines.yaml
 ```
@@ -117,6 +121,7 @@ Each run writes to `runs/<timestamp>/`:
 | `state/<ip>.json` | Collected data per server (used for resume and `fwtool report`) |
 | `raw/<ip>.json` | Raw Redfish responses (`--save-raw` only) |
 | `fwtool.log` | Structured JSON-lines log |
+| `validation.txt` | Output of `fwtool validate`; `validation-share.txt` with `--share` (names and IPs masked) |
 
 Run folders contain serial numbers and IPs; they are git-ignored.
 

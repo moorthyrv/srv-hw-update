@@ -115,3 +115,33 @@ def test_pilot_limit(tmp_path, fake_fleet):
     assert main(args(tmp_path, "--limit", "2")) == 0
     run_dir = next((tmp_path / "runs").iterdir())
     assert len(read_csv(run_dir / "servers.csv")) == 2
+
+
+def test_validate_command(tmp_path, fake_fleet, capsys, monkeypatch):
+    assert main(args(tmp_path)) == 0
+    monkeypatch.chdir(tmp_path)
+    capsys.readouterr()
+    ref = ["--dell-catalog", str(FX / "dell_catalog.xml"), "--hpe-reference", str(FX / "hpe_reference.yaml")]
+    rc = main(["validate", *ref])
+    out = capsys.readouterr().out
+    assert rc == 0  # warnings (unreachable, partial) but no hard failure
+    assert "[WARN] Collection: 8 servers: ok=5 partial=2 failed=1" in out
+    assert "[WARN] Failed: unreachable" in out and "10.0.0.8" in out
+    assert "[PASS] BIOS and BMC firmware found" in out
+    assert "[PASS] HPE BIOS version parsed" in out
+    assert "HPE reference coverage" in out and "Appliance nodes flagged" in out
+    run_dir = next((tmp_path / "runs").iterdir())
+    assert (run_dir / "validation.txt").exists()
+    assert main(["validate", "--strict", *ref]) == 1
+
+    capsys.readouterr()
+    main(["validate", "--share", *ref])
+    shared = (run_dir / "validation-share.txt").read_text(encoding="utf-8")
+    assert "10.0.0." not in shared and "srv01" not in shared
+    assert "server001" in shared and "ip001" in shared
+    assert "secret" not in shared
+
+
+def test_validate_without_runs(tmp_path, monkeypatch):
+    monkeypatch.chdir(tmp_path)
+    assert main(["validate"]) == 2

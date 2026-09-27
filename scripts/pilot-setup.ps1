@@ -245,8 +245,15 @@ $csv = Join-Path $run.FullName "servers.csv"
 Import-Csv $csv | Select-Object rank, name, vendor, model, generation, bmc_type, collection_status, overall_status,
     priority_score, components_behind, error_class |
     Format-Table -AutoSize | Out-String -Width 250 | Write-Host
+Write-Host ""
+Write-Host "  Validation (checks the results for gaps and problems):" -ForegroundColor Cyan
+Push-Location $Repo
+$valArgs = @("-m", "fwtool", "validate", "--run-dir", $run.FullName, "--share")
+if ($Esxi) { $valArgs += @("--dell-esxi-catalog", $Esxi) }
+& $VenvPy @valArgs
+Pop-Location
 Write-Host "  Run folder: $($run.FullName)"
-Write-Host "  Send back: servers.csv, firmware.csv, and raw\<ip>.json for any server that failed or looks wrong."
+Write-Host "  Send back: validation-share.txt (names/IPs masked), plus servers.csv / firmware.csv if asked."
 Write-Host "  (No passwords are stored in any of these files.)"
 $ans = Read-Host "  Open the run folder and report.xlsx now? (Y/N)"
 if ($ans -match '^[Yy]') {

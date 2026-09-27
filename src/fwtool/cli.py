@@ -2,6 +2,7 @@
 
   fwtool inventory -i servers.csv [...]     collect + report (read-only)
   fwtool report --run-dir runs/<id>         re-analyse a run (e.g. after a catalog update)
+  fwtool validate [--share]                 check the newest run for gaps and problems
   fwtool catalog refresh | import | info    manage the cached Dell catalog
   fwtool hpe-reference import <files>       build hpe_reference.yaml from HPE fwpp metadata
 """
@@ -28,6 +29,7 @@ from .reference.baselines import Baselines
 from .reference.hpe_reference import HpeReference, import_fwpp, write_reference
 from .report.build import build_reports
 from .runner import RunState, iter_limit, run_collection
+from .validate import render, validate_run
 
 log = logging.getLogger("fwtool")
 
@@ -166,6 +168,30 @@ def cmd_report(args: argparse.Namespace) -> int:
     return 0
 
 
+def _latest_run(parent: str | Path) -> Path | None:
+    runs = sorted((p for p in Path(parent).glob("*") if (p / "state").is_dir()), key=lambda p: p.name)
+    return runs[-1] if runs else None
+
+
+def cmd_validate(args: argparse.Namespace) -> int:
+    run_dir = Path(args.run_dir) if args.run_dir else _latest_run(args.runs)
+    if run_dir is None or not (run_dir / "state").is_dir():
+        print(f"No run directory found (looked in {args.run_dir or args.runs}).", file=sys.stderr)
+        return 2
+    setup_logging(None, args.verbose)
+    args.offline = True  # validation never downloads anything
+    settings = _settings(args)
+    analyzer = _build_analyzer(args, settings)
+    results = RunState(run_dir).all_results()
+    v = validate_run(run_dir, results, analyzer, share=args.share)
+    text = render(v, share=args.share)
+    print(text)
+    out = run_dir / ("validation-share.txt" if args.share else "validation.txt")
+    out.write_text(text, encoding="utf-8")
+    print(f"Saved: {out}")
+    return {"PASS": 0, "WARN": 0, "FAIL": 1}[v.worst] if not args.strict else {"PASS": 0, "WARN": 1, "FAIL": 1}[v.worst]
+
+
 def cmd_catalog(args: argparse.Namespace) -> int:
     setup_logging(None, args.verbose)
     settings = Settings.load(args.config)
@@ -231,6 +257,16 @@ def build_parser() -> argparse.ArgumentParser:
     rep.add_argument("-v", "--verbose", action="store_true")
     _add_reference_args(rep)
     rep.set_defaults(func=cmd_report)
+
+    val = sub.add_parser("validate", help="check a run's results for gaps and problems (no BMC traffic)")
+    val.add_argument("--run-dir", help="run folder to check (default: newest folder under --runs)")
+    val.add_argument("--runs", default="runs", help="parent folder of runs (default: runs)")
+    val.add_argument("--share", action="store_true",
+                     help="mask server names and IPs so the summary can be shared outside the team")
+    val.add_argument("--strict", action="store_true", help="exit code 1 on warnings as well as failures")
+    val.add_argument("-v", "--verbose", action="store_true")
+    _add_reference_args(val)
+    val.set_defaults(func=cmd_validate)
 
     cat = sub.add_parser("catalog", help="manage the cached Dell catalog")
     cat.add_argument("action", choices=["refresh", "import", "info"])
