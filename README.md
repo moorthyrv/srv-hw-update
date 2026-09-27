@@ -23,6 +23,37 @@ BMC traffic always goes direct: proxy and CA-bundle environment variables (`HTTP
 `REQUESTS_CA_BUNDLE`, ...) are ignored for BMCs. The Dell catalog download is internet traffic and does
 use the corporate proxy from the environment.
 
+### Windows 11 (PowerShell)
+
+```powershell
+winget install Python.Python.3.12          # or install from python.org, tick "Add to PATH"
+# Get the code: git clone, or GitHub > Code > Download ZIP of this branch and unzip it
+cd srv-hw-update
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1               # if blocked: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+pip install -e .
+fwtool --version
+```
+
+Credentials for the session (they vanish when the window closes):
+
+```powershell
+$env:DELL_BMC_USER = "svc_fw_ro"; $env:HPE_BMC_USER = "svc_fw_ro"
+# leave the passwords out and fwtool prompts for them without echoing
+```
+
+Windows notes:
+
+* **Catalog download.** Behind a corporate proxy that uses a PAC file or TLS inspection, `fwtool catalog refresh`
+  may fail. Download `Catalog.xml.gz` in the browser and run `fwtool catalog import Catalog.xml.gz`.
+* **Laptop on VPN.** The laptop must reach the BMC VLAN on 443. If the VPN is slow, lower `--workers`
+  (for example 10). If the laptop sleeps or the VPN drops, run the same command with `--resume runs\<folder>`
+  and it continues where it stopped.
+* **Keep it awake** for long runs: Settings > System > Power > Screen and sleep > Never, while plugged in.
+* **Endpoint security.** Some EDR tools flag a program opening many HTTPS connections. If runs are blocked,
+  ask security to allow `python.exe` from the `.venv` folder.
+* Output opens directly in Excel (`report.xlsx`, and the CSVs are UTF-8 with a BOM).
+
 ## Credentials
 
 One read-only account per vendor (or one shared account). Lookup order:
