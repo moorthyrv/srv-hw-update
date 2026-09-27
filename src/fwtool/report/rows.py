@@ -9,7 +9,7 @@ from ..redfish.errors import FIX_HINTS
 SERVER_COLUMNS = [
     "rank", "name", "bmc_ip", "vendor", "model", "generation", "bmc_type", "bmc_version", "bmc_latest", "bmc_status",
     "bios_version", "bios_latest", "bios_status", "service_tag", "serial", "system_id", "power_state", "health",
-    "vxrail", "update_eligible", "support", "site", "environment", "os",
+    "vxrail", "appliance", "update_eligible", "support", "site", "environment", "os",
     "collection_status", "overall_status", "priority_score", "components_total", "components_behind",
     "components_noncompliant", "components_unknown", "components_no_reference",
     "oldest_component_age_days", "oldest_component", "error_class", "error", "fix_hint",
@@ -25,8 +25,10 @@ FIRMWARE_COLUMNS = [
 
 
 def update_eligible(r: ServerResult) -> str:
-    if r.vxrail:
+    if r.vxrail or r.appliance == "VxRail":
         return "no - VxRail (update via VxRail Manager only)"
+    if r.appliance:
+        return f"no - {r.appliance} (update via its own manager only)"
     return "yes"
 
 
@@ -41,7 +43,8 @@ def server_rows(pairs: list[tuple[ServerResult, ServerAnalysis]]) -> list[dict]:
             "bios_version": r.bios_version, "bios_latest": a.bios_latest, "bios_status": a.bios_status,
             "service_tag": r.service_tag, "serial": r.serial, "system_id": r.system_id,
             "power_state": r.power_state, "health": r.health,
-            "vxrail": "yes" if r.vxrail else "no", "update_eligible": update_eligible(r),
+            "vxrail": "yes" if r.vxrail else "no", "appliance": r.appliance,
+            "update_eligible": update_eligible(r),
             "support": r.support, "site": r.site, "environment": r.environment, "os": r.os,
             "collection_status": r.collection_status, "overall_status": a.overall_status,
             "priority_score": a.priority_score, "components_total": a.components_total,

@@ -108,9 +108,11 @@ def cmd_inventory(args: argparse.Namespace) -> int:
     records = iter_limit(records, args.limit)
     print(f"Input: {len(records)} server(s) from {args.input} "
           f"(blank rows {rep.blank}, duplicate IPs {len(rep.duplicates)}, missing IP {rep.missing_ip}, "
-          f"invalid {len(rep.invalid_ip)})")
+          f"invalid {len(rep.invalid_ip)}, other vendors skipped {len(rep.out_of_scope)})")
     for d in rep.duplicates:
         log.warning("duplicate IP skipped: %s", d)
+    for d in rep.out_of_scope:
+        log.info("out-of-scope vendor skipped: %s", d)
     if not records:
         print("Nothing to do.")
         return 1

@@ -24,7 +24,7 @@ STATUS_FILLS = {
 
 WORST_COLUMNS = [
     "rank", "priority_score", "name", "bmc_ip", "vendor", "model", "generation", "support", "vxrail",
-    "environment", "site", "overall_status", "components_behind", "components_noncompliant",
+    "appliance", "environment", "site", "overall_status", "components_behind", "components_noncompliant",
     "oldest_component_age_days", "oldest_component", "bios_version", "bios_latest", "bmc_version", "bmc_latest",
     "collection_status",
 ]

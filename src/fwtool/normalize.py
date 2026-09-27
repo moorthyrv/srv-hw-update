@@ -76,10 +76,10 @@ def dell_generation(model: str, system_generation: str = "", bmc_version: str = 
     m = re.search(r"(\d{2})G", system_generation or "")
     if m:
         return f"{m.group(1)}G"
-    m = re.search(r"\b(?:R|T|C|M|MX|FC|XC|XR|XE|HS)\d{2,3}(\d)", (model or "").replace(" ", ""), re.I)
+    # Dell model numbers: the second digit is the generation (R640 -> 14G, R760XD2 -> 16G, R7525 -> 15G).
+    m = re.search(r"(?<![A-Za-z0-9])(?:R|T|C|M|MX|FC|XC|XE|HS)\d(\d)\d{1,2}(?!\d)", model or "", re.I)
     if m:
-        last = m.group(1)
-        return {"0": "13G", "4": "14G", "5": "15G", "6": "16G", "7": "17G"}.get(last, "")
+        return {"3": "13G", "4": "14G", "5": "15G", "6": "16G", "7": "17G"}.get(m.group(1), "")
     return ""
 
 

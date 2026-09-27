@@ -39,7 +39,10 @@ is looked up per server, so a HashiCorp Vault / CyberArk provider can be added l
 ## Input CSV
 
 Required columns: `name`, `bmc_ip`. Optional: `support` (`hpe` / `tpm`), `site`, `environment`,
-`os` (`esxi` / `linux` / `windows`), `platform` (`vxrail` / `vsan`), `vendor` (`dell` / `hpe`).
+`os` (`esxi` / `linux` / `windows`), `platform` (`vxrail` / `vxflex` / `vsan`), `vendor` (`dell` / `hpe`),
+and the CMDB model column (`model`, `model id`, `Modle id` or `manufacturer`, e.g. `Dell Inc. PowerEdge R640`).
+When there is no `vendor` column, the vendor is taken from the model text; rows for other vendors
+(Cisco UCS, IBM, Lenovo, ...) are skipped up front and counted as "other vendors skipped".
 A UTF-8 BOM, `;` or tab delimiters, extra columns (kept in state files), blank rows and duplicate IPs
 (first row wins, others listed in the log) are all handled. See `examples/servers.csv`.
 
@@ -91,8 +94,13 @@ inventory Id. HPE `Oem.Hpe.DeviceContext` is kept as the location; HPE drives co
 BIOS, BMC, CPLD, Storage, NIC, Drive, PSU, Other.
 
 **VxRail** nodes are flagged when the model or SKU contains "VxRail", the CSV `platform` is `vxrail`, or
-the IP / name / service tag is in `--vxrail-list`. They are reported with `update_eligible = no`
-and must only be updated through VxRail Manager.
+the IP / name / service tag is in `--vxrail-list`. **VxFlex / PowerFlex** nodes (e.g. "VxFlex integrated
+rack R640 C") are flagged the same way in the `appliance` column. Both are reported with
+`update_eligible = no` and must only be updated through VxRail Manager / PowerFlex Manager.
+
+Supported and tested generations: Dell 13G (iDRAC8) to 16G (iDRAC9), including R640, R650 and R760XD2;
+HPE Gen8 and Gen9 (iLO 4), Gen10 and Gen10 Plus (iLO 5), and Gen11 (iLO 6). Gen8 System ROMs are
+versioned by date (`P70 07/01/2015`) and are compared as `2015.07.01`.
 
 **Failures** are classified as `unreachable`, `tls`, `auth-401`, `forbidden-403`, `redfish-unsupported`,
 `no-credentials` or `error`, each with a fix hint. **Partial** means the server answered but some

@@ -4,18 +4,23 @@ from __future__ import annotations
 
 import csv
 import ipaddress
+import re
 import logging
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
 log = logging.getLogger(__name__)
 
-KNOWN = ("name", "bmc_ip", "support", "site", "environment", "os", "platform", "vendor")
+KNOWN = ("name", "bmc_ip", "support", "site", "environment", "os", "platform", "vendor", "cmdb_model")
 ALIASES = {
     "hostname": "name", "server": "name", "server_name": "name",
     "ip": "bmc_ip", "bmc": "bmc_ip", "idrac_ip": "bmc_ip", "ilo_ip": "bmc_ip", "bmc ip": "bmc_ip",
     "env": "environment",
+    "model": "cmdb_model", "model_id": "cmdb_model", "modle_id": "cmdb_model", "model id": "cmdb_model",
+    "modle id": "cmdb_model", "manufacturer": "cmdb_model",
 }
+
+OUT_OF_SCOPE = re.compile(r"cisco|\bucs|ibm|lenovo|supermicro|fujitsu|huawei|inspur|oracle corporation sun", re.I)
 
 
 @dataclass
@@ -41,6 +46,7 @@ class LoadReport:
     missing_ip: int = 0
     invalid_ip: list[str] = field(default_factory=list)
     duplicates: list[str] = field(default_factory=list)
+    out_of_scope: list[str] = field(default_factory=list)
 
 
 def _norm_header(h: str) -> str:
@@ -54,6 +60,18 @@ def _norm_vendor(v: str) -> str:
         return "dell"
     if v.startswith("hp") or "hewlett" in v:
         return "hpe"
+    return ""
+
+
+def vendor_from_model(text: str) -> str:
+    """Vendor from a CMDB model string: 'dell', 'hpe', 'other' (out of scope) or '' (unknown)."""
+    t = (text or "").strip()
+    if re.search(r"dell|poweredge|vx\s*rail|vx\s*flex|powerflex", t, re.I):
+        return "dell"
+    if re.search(r"proliant|hewlett|\bhpe?\b|synergy|apollo", t, re.I):
+        return "hpe"  # includes 'Oracle Corporation HP ProLiant ...'
+    if OUT_OF_SCOPE.search(t):
+        return "other"
     return ""
 
 
@@ -100,6 +118,12 @@ def load_servers(path: str | Path) -> tuple[list[ServerRecord], LoadReport]:
             if ip in seen:
                 rep.duplicates.append(f"{ip} ({values.get('name', '')} duplicates {seen[ip]})")
                 continue
+            vendor = _norm_vendor(values.get("vendor", ""))
+            if not vendor and values.get("cmdb_model"):
+                vendor = vendor_from_model(values["cmdb_model"])
+                if vendor == "other":
+                    rep.out_of_scope.append(f"{ip} ({values.get('name', '')}: {values['cmdb_model']})")
+                    continue
             seen[ip] = values.get("name", "") or ip
             support = values.get("support", "").lower()
             if support and support not in ("hpe", "tpm"):
@@ -112,7 +136,7 @@ def load_servers(path: str | Path) -> tuple[list[ServerRecord], LoadReport]:
                 environment=values.get("environment", ""),
                 os=values.get("os", "").lower(),
                 platform=values.get("platform", "").lower(),
-                vendor=_norm_vendor(values.get("vendor", "")),
+                vendor=vendor,
                 extra={k: v for k, v in values.items() if k not in KNOWN},
             ))
     return out, rep

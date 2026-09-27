@@ -7,6 +7,7 @@ from datetime import date, datetime
 
 _TOKEN = re.compile(r"\d+|[A-Za-z]+")
 _NUMERIC_VERSION = re.compile(r"\d+(?:\.\d+)+|\d+")
+_HPE_ROM_GEN8 = re.compile(r"^\s*([A-Z]\d{2})\s+(\d{1,2})/(\d{1,2})/(\d{4})\s*$", re.I)
 _HPE_ROM = re.compile(r"^\s*([A-Z]\d{2})\s+v?(\d+\.\d+)\s*(?:\((\d{1,2})/(\d{1,2})/(\d{4})\))?", re.I)
 
 
@@ -43,7 +44,15 @@ def hpe_rom(version: str) -> tuple[str, str, date | None]:
     """
     m = _HPE_ROM.match(version or "")
     if not m:
-        return "", "", None
+        # Gen8 ROMs are versioned by date: 'P70 07/01/2015' -> ('P70', '2015.07.01', 2015-07-01)
+        g8 = _HPE_ROM_GEN8.match(version or "")
+        if not g8:
+            return "", "", None
+        try:
+            d = date(int(g8.group(4)), int(g8.group(2)), int(g8.group(3)))
+        except ValueError:
+            return "", "", None
+        return g8.group(1).upper(), d.strftime("%Y.%m.%d"), d
     fam, ver = m.group(1).upper(), m.group(2)
     d = None
     if m.group(5):

@@ -95,23 +95,35 @@ def fetch_collection(client: RedfishClient, path: str, result: ServerResult, wha
     return out
 
 
-_VXRAIL = re.compile(r"vx\s*rail", re.I)
+_APPLIANCES = [
+    ("VxRail", re.compile(r"vx\s*rail", re.I)),
+    ("VxFlex", re.compile(r"vx\s*flex|power\s*flex", re.I)),
+]
 
 
 def detect_vxrail(result: ServerResult, *texts: str, vxrail_list: set[str] | None = None) -> None:
-    """Flag VxRail nodes. They are reported but must never be updated."""
-    if (result.platform or "").strip().lower() == "vxrail":
-        result.vxrail, result.vxrail_reason = True, "input CSV platform=vxrail"
-        return
-    for text in (result.model, *texts):
-        if text and _VXRAIL.search(text):
-            result.vxrail, result.vxrail_reason = True, f"model/SKU contains VxRail ({text.strip()[:40]})"
+    """Flag VxRail and VxFlex/PowerFlex nodes. They are reported but must never be updated by fwtool."""
+    platform = (result.platform or "").strip().lower()
+    for label, pattern in _APPLIANCES:
+        if pattern.search(platform):
+            _flag(result, label, f"input CSV platform={platform}")
             return
+    for text in (result.model, *texts):
+        for label, pattern in _APPLIANCES:
+            if text and pattern.search(text):
+                _flag(result, label, f"model/SKU contains {label} ({text.strip()[:40]})")
+                return
     if vxrail_list:
         for key in (result.bmc_ip, result.name, result.service_tag, result.serial):
             if key and key.lower() in vxrail_list:
-                result.vxrail, result.vxrail_reason = True, "listed in VxRail list file"
+                _flag(result, "VxRail", "listed in VxRail list file")
                 return
+
+
+def _flag(result: ServerResult, label: str, reason: str) -> None:
+    result.appliance = label
+    result.vxrail = label == "VxRail"
+    result.vxrail_reason = reason
 
 
 class VendorAdapter(ABC):

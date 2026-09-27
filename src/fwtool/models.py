@@ -59,6 +59,7 @@ class ServerResult:
     health: str = ""
     vxrail: bool = False
     vxrail_reason: str = ""
+    appliance: str = ""  # VxRail / VxFlex: managed by its own manager, never updated by fwtool
 
     collection_status: str = FAILED
     error_class: str = ""
