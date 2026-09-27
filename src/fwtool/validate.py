@@ -176,9 +176,16 @@ def validate_run(run_dir: str | Path, results: list[ServerResult], analyzer: Ana
         hint = ("Components without a reference get no latest version or age. "
                 + ("Update the Dell catalog (fwtool catalog refresh)." if vendor == "dell"
                    else "Add manual entries to hpe_reference.yaml for the names below."))
+        # Most frequent names first, but always show at least 3 per category so none is hidden.
+        shown: list[str] = []
+        for name, _ in unmatched.most_common():
+            cat = name.split(":", 1)[0]
+            if len(shown) < max_items or sum(1 for x in shown if x.split(":", 1)[0] == cat) < 3:
+                shown.append(name)
+        more = len(unmatched) - len(shown)
+        items = [f"{unmatched[name]}x {name}" for name in shown] + ([f"... and {more} more"] if more > 0 else [])
         v.add(f"{vendor.upper()} reference coverage (components with a latest version)", status, detail,
-              hint if unmatched else "",
-              [f"{n}x {name}" for name, n in unmatched.most_common(max_items)])
+              hint if unmatched else "", items)
 
     # 7. Firmware status overview ---------------------------------------------------
     st = Counter(a.overall_status for _, a in collected)

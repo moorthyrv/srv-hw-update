@@ -184,6 +184,11 @@ def _classify(name: str, summary: str, provides: list[str]) -> list[tuple[str, s
     m = re.match(r"^firmware-([a-z]\d{2})_me$", n)
     if m:
         return [(f"sps:{m.group(1).upper()}", "Other", {})]
+    enclosures = [p.split(":")[-1].rstrip(")") for p in provides
+                  if re.match(r"firmware\(hp:sd:disk_enclosure:ubm\d+\)", p)]
+    if enclosures:
+        # Drive backplanes, e.g. iLO name '8 SFF 24G x1NVMe/SAS UBM6 BC BP'
+        return [(f"backplane:{e}", "Drive", {"match": [rf"\b{e.upper()}\b"]}) for e in enclosures]
     drives = [p.split(":")[-1].rstrip(")") for p in provides
               if re.match(r"firmware\(hp:sd:(sas|sata|nvme):", p)]
     if drives:

@@ -4,6 +4,63 @@
 spp_level: ''
 generated: '2026-09-27'
 components:
+  backplane:ubm1:
+    category: Drive
+    description: Online Flash Component - Gen10Plus UBM1 Backplane PIC Firmware
+    source: fwpp-gen10,fwpp-gen9
+    match:
+    - \bUBM1\b
+    versions:
+    - version: '1.46'
+      date: '2022-01-12'
+    - version: '1.42'
+      date: '2020-12-17'
+  backplane:ubm2:
+    category: Drive
+    description: Online Flash Component - Gen10Plus UBM2 Backplane PIC Firmware
+    source: fwpp-gen10,fwpp-gen9
+    match:
+    - \bUBM2\b
+    versions:
+    - version: '1.20'
+      date: '2022-02-23'
+    - version: '1.16'
+      date: '2020-10-15'
+  backplane:ubm3:
+    category: Drive
+    description: Online Flash Component - Gen10Plus UBM3 Backplane PIC Firmware
+    source: fwpp-gen10,fwpp-gen9
+    match:
+    - \bUBM3\b
+    versions:
+    - version: '1.24'
+      date: '2022-01-17'
+    - version: '1.22'
+      date: '2021-09-15'
+    - version: '1.20'
+      date: '2021-01-23'
+  backplane:ubm4:
+    category: Drive
+    description: Online Flash Component - Gen10Plus UBM4 Backplane PIC Firmware
+    source: fwpp-gen10,fwpp-gen9
+    match:
+    - \bUBM4\b
+    versions:
+    - version: '1.24'
+      date: '2022-01-17'
+    - version: '1.22'
+      date: '2021-09-15'
+    - version: '1.20'
+      date: '2021-01-21'
+  backplane:ubm6:
+    category: Drive
+    description: Online Flash Component - Gen10Plus UBM6 Backplane PIC Firmware
+    source: fwpp-gen10
+    match:
+    - \bUBM6\b
+    versions:
+    - version: '1.02'
+      date: '2022-07-24'
   drive:DG0146BAMYQ:
     category: Drive
     description: DG0146FARVU, DG0300FARVV, DG0146BAMYQ, DG0300BAMYR, EG0146FAWJC, and EG0300FAWJD Drives

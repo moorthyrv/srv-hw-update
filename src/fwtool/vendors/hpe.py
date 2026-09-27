@@ -82,6 +82,7 @@ class HpeAdapter(VendorAdapter):
         # iLO firmware inventory does not list drives; they live under Storage.
         if self.collect_drives:
             self._drives(client, system, sys_path, result)
+            _dedupe_drives(result)
         if "PSU" not in {c.category for c in result.components}:
             self._power_supplies(client, root, result)
 
@@ -197,6 +198,26 @@ class HpeAdapter(VendorAdapter):
                 raise
             result.warnings.append(f"could not read {uri}: {e.error_class}")
             return None
+
+
+_DRIVE_NAME = re.compile(r"\b\d+(?:\.\d+)?\s*[TG]B\b.*\b(SSD|HDD|NVMe|SAS|SATA)\b", re.I)
+_BACKPLANE = re.compile(r"\bUBM\d?\b|\bBP\b|Backplane|Drive Cage|Enclosure", re.I)
+
+
+def _dedupe_drives(result: ServerResult) -> None:
+    """iLO 6 also lists drives in FirmwareInventory ('HPE 3.84TB 12G SAS SSD').
+
+    When drives were read from Storage (which carries the drive model needed
+    for the reference lookup), drop those FirmwareInventory duplicates.
+    Backplanes stay.
+    """
+    if not any(c.source in ("Storage.Drives", "SmartStorage.DiskDrives") for c in result.components):
+        return
+    result.components = [
+        c for c in result.components
+        if not (c.source == "FirmwareInventory" and c.category == "Drive"
+                and _DRIVE_NAME.search(c.name) and not _BACKPLANE.search(c.name))
+    ]
 
 
 def _drive_location(drive: dict) -> str:

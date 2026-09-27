@@ -91,3 +91,26 @@ def test_cmdb_model_column_skips_other_vendors(tmp_path):
     servers, rep = load_servers(p)
     assert [(s.name, s.vendor) for s in servers] == [("a", "dell"), ("c", "hpe"), ("d", "")]
     assert len(rep.out_of_scope) == 1 and "CISCO" in rep.out_of_scope[0]
+
+
+def test_ilo6_drives_not_double_counted():
+    """Real DL360 Gen11: iLO 6 lists drives in FirmwareInventory and under Storage."""
+    fx = json.loads((FX / "ilo5_dl380g10.json").read_text())
+    p = fx["paths"]
+    inv = "/redfish/v1/UpdateService/FirmwareInventory/"
+    extra = [("HPE 3.84TB 12G SAS SSD", "HPD2"), ("HPE 3.84TB 12G SAS SSD", "HPD2"),
+             ("8 SFF 24G x1NVMe/SAS UBM6 BC BP", "1.24")]
+    for i, (name, ver) in enumerate(extra, 100):
+        uri = f"{inv}{i}/"
+        p[inv]["Members"].append({"@odata.id": uri})
+        p[uri] = {"@odata.id": uri, "Id": str(i), "Name": name, "Version": ver, "Oem": {"Hpe": {"DeviceContext": "Box 1"}}}
+    r, _ = collect_server(ServerRecord("g11", "10.9.9.7"), PROVIDER, CollectOptions(),
+                          session_factory=lambda: FakeSession(fx))
+    drives = [c.name for c in r.components if c.category == "Drive"]
+    assert "HPE 3.84TB 12G SAS SSD" not in drives  # duplicate removed
+    assert drives.count("Drive MB4000GVYZA") == 2  # Storage entries (with model) kept
+    assert "8 SFF 24G x1NVMe/SAS UBM6 BC BP" in drives  # backplane kept
+    ref = HpeReference.load(Path(__file__).parents[1] / "hpe_reference.yaml")
+    sa = Analyzer(Settings(), hpe_reference=ref).server(r)
+    bp = next(a for c, a in zip(r.components, sa.components) if "UBM6" in c.name)
+    assert bp.reference == "hpe-reference:backplane:ubm6" and bp.latest_version == "1.02"
