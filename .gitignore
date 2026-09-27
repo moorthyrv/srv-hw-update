@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+
+# Credentials: never commit
+.env
+*.env
+
+# Run output and caches (contain serials, IPs, inventory)
+runs/
+cache/
+*.xlsx
+servers.csv
+firmware.csv
+
+# Vendor data files are large; keep them out of the code branch
+data/
+.DS_Store
