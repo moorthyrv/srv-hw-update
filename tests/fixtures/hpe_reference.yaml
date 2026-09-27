@@ -1,0 +1,58 @@
+spp_level: "2026.03.00"
+components:
+  system-rom:U30:
+    category: BIOS
+    description: HPE ProLiant DL380 Gen10 (U30) Servers
+    versions:
+      - {version: "3.66", date: 2026-04-01}
+      - {version: "3.40", date: 2024-12-01}
+      - {version: "2.76", date: 2023-02-09}
+      - {version: "2.68", date: 2022-07-14}
+  system-rom:U54:
+    category: BIOS
+    versions:
+      - {version: "2.94", date: 2026-06-25}
+      - {version: "2.16", date: 2024-03-01}
+  system-rom:P89:
+    category: BIOS
+    versions:
+      - {version: "3.30", date: 2023-09-21}
+      - {version: "2.80", date: 2020-10-16}
+  ilo4:
+    category: BMC
+    versions:
+      - {version: "2.82", date: 2023-02-12}
+      - {version: "2.55", date: 2017-08-21}
+  ilo5:
+    category: BMC
+    versions:
+      - {version: "3.21", date: 2026-07-30}
+      - {version: "3.10", date: 2025-01-01}
+      - {version: "2.72", date: 2022-09-04}
+  ilo6:
+    category: BMC
+    versions:
+      - {version: "1.78", date: 2026-07-29}
+      - {version: "1.58", date: 2024-03-25}
+  ie:gen10:
+    category: Other
+    versions:
+      - {version: "0.2.3.0", date: 2022-02-21}
+      - {version: "0.2.2.3", date: 2021-08-24}
+  storage:e208e-p:
+    category: Storage
+    match: ['\bP408I-A\b', '\bE208I-A\b']
+    versions:
+      - {version: "8.23", date: 2026-06-08}
+      - {version: "3.53", date: 2021-02-16}
+  drive:MB4000GVYZA:
+    category: Drive
+    versions:
+      - {version: "HPG6", date: 2023-01-01}
+      - {version: "HPG5", date: 2021-01-01}
+  nic-331i:
+    category: NIC
+    source: manual
+    match: ['331i']
+    versions:
+      - {version: "20.28.41", date: 2024-05-01}

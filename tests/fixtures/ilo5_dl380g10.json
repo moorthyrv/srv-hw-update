@@ -1,0 +1,331 @@
+{
+ "password": "secret",
+ "expand": [
+  "?$expand=."
+ ],
+ "paths": {
+  "/redfish/v1/": {
+   "@odata.id": "/redfish/v1/",
+   "Id": "RootService",
+   "RedfishVersion": "1.6.0",
+   "Product": "ProLiant DL380 Gen10",
+   "Oem": {
+    "Hpe": {
+     "Manager": [
+      {
+       "ManagerType": "iLO 5"
+      }
+     ]
+    }
+   },
+   "Systems": {
+    "@odata.id": "/redfish/v1/Systems/"
+   },
+   "Managers": {
+    "@odata.id": "/redfish/v1/Managers/"
+   },
+   "Chassis": {
+    "@odata.id": "/redfish/v1/Chassis/"
+   },
+   "Vendor": "HPE",
+   "UpdateService": {
+    "@odata.id": "/redfish/v1/UpdateService/"
+   }
+  },
+  "/redfish/v1/Systems/": {
+   "@odata.id": "/redfish/v1/Systems/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/1/": {
+   "@odata.id": "/redfish/v1/Systems/1/",
+   "Id": "1",
+   "Manufacturer": "HPE",
+   "Model": "ProLiant DL380 Gen10",
+   "SerialNumber": "MXQ01234AB",
+   "SKU": "868703-B21",
+   "BiosVersion": "U30 v2.76 (02/09/2023)",
+   "PowerState": "On",
+   "Status": {
+    "Health": "OK",
+    "HealthRollup": "OK",
+    "State": "Enabled"
+   },
+   "Storage": {
+    "@odata.id": "/redfish/v1/Systems/1/Storage/"
+   }
+  },
+  "/redfish/v1/Managers/": {
+   "@odata.id": "/redfish/v1/Managers/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Managers/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Managers/1/": {
+   "@odata.id": "/redfish/v1/Managers/1/",
+   "Id": "1",
+   "FirmwareVersion": "iLO 5 v2.72",
+   "Model": "iLO 5",
+   "ManagerType": "BMC"
+  },
+  "/redfish/v1/Chassis/": {
+   "@odata.id": "/redfish/v1/Chassis/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Chassis/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Chassis/1/": {
+   "@odata.id": "/redfish/v1/Chassis/1/",
+   "Id": "1",
+   "Power": {
+    "@odata.id": "/redfish/v1/Chassis/1/Power/"
+   }
+  },
+  "/redfish/v1/Chassis/1/Power/": {
+   "@odata.id": "/redfish/v1/Chassis/1/Power/",
+   "PowerSupplies": [
+    {
+     "Name": "HpeServerPowerSupply",
+     "Model": "865408-B21",
+     "FirmwareVersion": "1.00",
+     "Oem": {
+      "Hpe": {
+       "BayNumber": 1
+      }
+     }
+    },
+    {
+     "Name": "HpeServerPowerSupply",
+     "Model": "865408-B21",
+     "FirmwareVersion": "1.00",
+     "Oem": {
+      "Hpe": {
+       "BayNumber": 2
+      }
+     }
+    }
+   ]
+  },
+  "/redfish/v1/UpdateService/": {
+   "@odata.id": "/redfish/v1/UpdateService/",
+   "FirmwareInventory": {
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/1/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/2/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/3/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/4/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/5/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/6/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/7/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/8/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/9/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/10/"
+    }
+   ],
+   "Members@odata.count": 10
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/1/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/1/",
+   "Id": "1",
+   "Name": "iLO 5",
+   "Version": "2.72 Sep 04 2022",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/2/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/2/",
+   "Id": "2",
+   "Name": "System ROM",
+   "Version": "U30 v2.76 (02/09/2023)",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/3/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/3/",
+   "Id": "3",
+   "Name": "Redundant System ROM",
+   "Version": "U30 v2.68 (07/14/2022)",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/4/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/4/",
+   "Id": "4",
+   "Name": "Intelligent Platform Abstraction Data",
+   "Version": "12.2.0 Build 17",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/5/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/5/",
+   "Id": "5",
+   "Name": "System Programmable Logic Device",
+   "Version": "0x2A",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/6/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/6/",
+   "Id": "6",
+   "Name": "Power Management Controller Firmware",
+   "Version": "1.0.8",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/7/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/7/",
+   "Id": "7",
+   "Name": "Innovation Engine (IE) Firmware",
+   "Version": "0.2.2.3",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/8/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/8/",
+   "Id": "8",
+   "Name": "Server Platform Services (SPS) Firmware",
+   "Version": "4.1.4.505",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/9/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/9/",
+   "Id": "9",
+   "Name": "HPE Smart Array P408i-a SR Gen10",
+   "Version": "3.53",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "Embedded RAID"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/10/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/10/",
+   "Id": "10",
+   "Name": "HPE Ethernet 1Gb 4-port 331i Adapter - NIC",
+   "Version": "20.14.54",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "Embedded LOM"
+    }
+   }
+  },
+  "/redfish/v1/Systems/1/Storage/": {
+   "@odata.id": "/redfish/v1/Systems/1/Storage/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/1/Storage/DE00A000/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/1/Storage/DE00A000/": {
+   "@odata.id": "/redfish/v1/Systems/1/Storage/DE00A000/",
+   "Id": "DE00A000",
+   "Drives": [
+    {
+     "@odata.id": "/redfish/v1/Systems/1/Storage/DE00A000/Drives/0/"
+    },
+    {
+     "@odata.id": "/redfish/v1/Systems/1/Storage/DE00A000/Drives/1/"
+    }
+   ],
+   "StorageControllers": [
+    {
+     "FirmwareVersion": "3.53",
+     "Model": "HPE Smart Array P408i-a SR Gen10"
+    }
+   ]
+  },
+  "/redfish/v1/Systems/1/Storage/DE00A000/Drives/0/": {
+   "@odata.id": "/redfish/v1/Systems/1/Storage/DE00A000/Drives/0/",
+   "Id": "0",
+   "Model": "MB4000GVYZA",
+   "Revision": "HPG5",
+   "PhysicalLocation": {
+    "PartLocation": {
+     "ServiceLabel": "Slot=0:Port=1I:Box=1:Bay=1"
+    }
+   }
+  },
+  "/redfish/v1/Systems/1/Storage/DE00A000/Drives/1/": {
+   "@odata.id": "/redfish/v1/Systems/1/Storage/DE00A000/Drives/1/",
+   "Id": "1",
+   "Model": "MB4000GVYZA",
+   "Revision": "HPG6",
+   "PhysicalLocation": {
+    "PartLocation": {
+     "ServiceLabel": "Slot=0:Port=1I:Box=1:Bay=2"
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,218 @@
+{
+ "password": "secret",
+ "expand": [],
+ "paths": {
+  "/redfish/v1/": {
+   "@odata.id": "/redfish/v1/",
+   "Id": "RootService",
+   "RedfishVersion": "1.6.0",
+   "Product": "ProLiant DL380 Gen9",
+   "Oem": {
+    "Hp": {
+     "Manager": [
+      {
+       "ManagerType": "iLO 5"
+      }
+     ]
+    }
+   },
+   "Systems": {
+    "@odata.id": "/redfish/v1/Systems/"
+   },
+   "Managers": {
+    "@odata.id": "/redfish/v1/Managers/"
+   },
+   "Chassis": {
+    "@odata.id": "/redfish/v1/Chassis/"
+   }
+  },
+  "/redfish/v1/Systems/": {
+   "@odata.id": "/redfish/v1/Systems/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/1/": {
+   "@odata.id": "/redfish/v1/Systems/1/",
+   "Id": "1",
+   "Manufacturer": "HPE",
+   "Model": "ProLiant DL380 Gen9",
+   "SerialNumber": "CZ2019ABCD",
+   "SKU": "868703-B21",
+   "BiosVersion": "P89 v2.60 (05/21/2018)",
+   "PowerState": "On",
+   "Status": {
+    "Health": "OK",
+    "HealthRollup": "OK",
+    "State": "Enabled"
+   },
+   "Oem": {
+    "Hp": {
+     "Links": {
+      "SmartStorage": {
+       "@odata.id": "/redfish/v1/Systems/1/SmartStorage/"
+      }
+     }
+    }
+   }
+  },
+  "/redfish/v1/Managers/": {
+   "@odata.id": "/redfish/v1/Managers/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Managers/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Managers/1/": {
+   "@odata.id": "/redfish/v1/Managers/1/",
+   "Id": "1",
+   "FirmwareVersion": "iLO 4 v2.55",
+   "Model": "iLO 4",
+   "ManagerType": "BMC"
+  },
+  "/redfish/v1/Chassis/": {
+   "@odata.id": "/redfish/v1/Chassis/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Chassis/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Chassis/1/": {
+   "@odata.id": "/redfish/v1/Chassis/1/",
+   "Id": "1",
+   "Power": {
+    "@odata.id": "/redfish/v1/Chassis/1/Power/"
+   }
+  },
+  "/redfish/v1/Chassis/1/Power/": {
+   "@odata.id": "/redfish/v1/Chassis/1/Power/",
+   "PowerSupplies": [
+    {
+     "Name": "HpeServerPowerSupply",
+     "Model": "865408-B21",
+     "FirmwareVersion": "1.00",
+     "Oem": {
+      "Hp": {
+       "BayNumber": 1
+      }
+     }
+    },
+    {
+     "Name": "HpeServerPowerSupply",
+     "Model": "865408-B21",
+     "FirmwareVersion": "1.00",
+     "Oem": {
+      "Hp": {
+       "BayNumber": 2
+      }
+     }
+    }
+   ]
+  },
+  "/redfish/v1/Systems/1/FirmwareInventory/": {
+   "@odata.id": "/redfish/v1/Systems/1/FirmwareInventory/",
+   "Current": {
+    "SystemRomActive": [
+     {
+      "Name": "System ROM",
+      "VersionString": "P89 v2.60 (05/21/2018)",
+      "Location": "System Board"
+     }
+    ],
+    "SystemRomBackup": [
+     {
+      "Name": "Redundant System ROM",
+      "VersionString": "P89 v2.52 (10/25/2017)",
+      "Location": "System Board"
+     }
+    ],
+    "SystemBMC": [
+     {
+      "Name": "iLO",
+      "VersionString": "2.55 Aug 16 2017",
+      "Location": "System Board"
+     }
+    ],
+    "SPSFirmwareVersionData": [
+     {
+      "Name": "Server Platform Services (SPS) Firmware",
+      "VersionString": "3.1.3.21.0",
+      "Location": "System Board"
+     }
+    ],
+    "SystemProgrammableLogicDevice": [
+     {
+      "Name": "System Programmable Logic Device",
+      "VersionString": "Version 0x34",
+      "Location": "System Board"
+     }
+    ],
+    "HPSmartArray": [
+     {
+      "Name": "Smart HBA H240ar",
+      "VersionString": "5.04",
+      "Location": "Slot 0"
+     }
+    ],
+    "NIC": [
+     {
+      "Name": "HP Ethernet 1Gb 4-port 331i Adapter",
+      "VersionString": "17.4.41",
+      "Location": "Embedded"
+     }
+    ]
+   }
+  },
+  "/redfish/v1/Systems/1/SmartStorage/": {
+   "@odata.id": "/redfish/v1/Systems/1/SmartStorage/",
+   "Links": {
+    "ArrayControllers": {
+     "@odata.id": "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/"
+    }
+   }
+  },
+  "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/": {
+   "@odata.id": "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/": {
+   "@odata.id": "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/",
+   "Links": {
+    "PhysicalDrives": {
+     "@odata.id": "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/DiskDrives/"
+    }
+   }
+  },
+  "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/DiskDrives/": {
+   "@odata.id": "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/DiskDrives/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/DiskDrives/0/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/1/SmartStorage/ArrayControllers/0/DiskDrives/0/": {
+   "Id": "0",
+   "Model": "EG0600FBVFP",
+   "Location": "1I:1:1",
+   "FirmwareVersion": {
+    "Current": {
+     "VersionString": "HPDC"
+    }
+   }
+  }
+ }
+}

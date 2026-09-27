@@ -1,0 +1,137 @@
+{
+ "password": "secret",
+ "expand": [],
+ "paths": {
+  "/redfish/v1/": {
+   "@odata.id": "/redfish/v1",
+   "Id": "RootService",
+   "RedfishVersion": "1.11.0",
+   "Oem": {
+    "Dell": {
+     "@odata.type": "#DellServiceRoot.v1_0_0.DellServiceRoot",
+     "ServiceTag": "ABC1234"
+    }
+   },
+   "Systems": {
+    "@odata.id": "/redfish/v1/Systems"
+   },
+   "Managers": {
+    "@odata.id": "/redfish/v1/Managers"
+   },
+   "Chassis": {
+    "@odata.id": "/redfish/v1/Chassis"
+   },
+   "UpdateService": {
+    "@odata.id": "/redfish/v1/UpdateService"
+   }
+  },
+  "/redfish/v1/Systems": {
+   "@odata.id": "/redfish/v1/Systems",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/System.Embedded.1"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/System.Embedded.1": {
+   "@odata.id": "/redfish/v1/Systems/System.Embedded.1",
+   "Id": "System.Embedded.1",
+   "Manufacturer": "Dell Inc.",
+   "Model": "PowerEdge R630",
+   "SKU": "OLD8888",
+   "SerialNumber": "CN7475OLD8888",
+   "BiosVersion": "2.11.0",
+   "PowerState": "On",
+   "Status": {
+    "Health": "OK",
+    "HealthRollup": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/Managers": {
+   "@odata.id": "/redfish/v1/Managers",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Managers/iDRAC.Embedded.1"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Managers/iDRAC.Embedded.1": {
+   "@odata.id": "/redfish/v1/Managers/iDRAC.Embedded.1",
+   "Id": "iDRAC.Embedded.1",
+   "FirmwareVersion": "2.61.60.60",
+   "Model": "13G Monolithic",
+   "ManagerType": "BMC"
+  },
+  "/redfish/v1/UpdateService": {
+   "@odata.id": "/redfish/v1/UpdateService",
+   "FirmwareInventory": {
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-159-2.11.0__BIOS.Setup.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-25227-2.61.60.60__iDRAC.Embedded.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-104095-25.5.5.0005__RAID.Integrated.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-1.0.4__CPLD.Embedded.1"
+    }
+   ],
+   "Members@odata.count": 4
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-159-2.11.0__BIOS.Setup.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-159-2.11.0__BIOS.Setup.1-1",
+   "Id": "Installed-159-2.11.0__BIOS.Setup.1-1",
+   "Name": "BIOS",
+   "Version": "2.11.0",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-25227-2.61.60.60__iDRAC.Embedded.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-25227-2.61.60.60__iDRAC.Embedded.1-1",
+   "Id": "Installed-25227-2.61.60.60__iDRAC.Embedded.1-1",
+   "Name": "Integrated Dell Remote Access Controller",
+   "Version": "2.61.60.60",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-104095-25.5.5.0005__RAID.Integrated.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-104095-25.5.5.0005__RAID.Integrated.1-1",
+   "Id": "Installed-104095-25.5.5.0005__RAID.Integrated.1-1",
+   "Name": "PERC H730P Mini",
+   "Version": "25.5.5.0005",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-1.0.4__CPLD.Embedded.1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-1.0.4__CPLD.Embedded.1",
+   "Id": "Installed-0-1.0.4__CPLD.Embedded.1",
+   "Name": "System CPLD",
+   "Version": "1.0.4",
+   "Updateable": false,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  }
+ }
+}

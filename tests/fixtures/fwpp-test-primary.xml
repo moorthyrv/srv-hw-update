@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://linux.duke.edu/metadata/common" xmlns:rpm="http://linux.duke.edu/metadata/rpm" packages="5">
+<package type="rpm"><name>firmware-system-u30</name><version epoch="0" ver="2.76_2023_02_09" rel="1.1"/><summary>HPE ProLiant DL380 Gen10 (U30) Servers firmware</summary><time file="1" build="1676000000"/>
+ <format><rpm:provides><rpm:entry name="firmware(hp:system:u30)"/></rpm:provides></format></package>
+<package type="rpm"><name>firmware-system-u30</name><version epoch="0" ver="3.66_2026_04_01" rel="1.1"/><summary>HPE ProLiant DL380 Gen10 (U30) Servers firmware</summary><time file="1" build="1775000000"/>
+ <format><rpm:provides><rpm:entry name="firmware(hp:system:u30)"/></rpm:provides></format></package>
+<package type="rpm"><name>hp-firmware-system-p89</name><version epoch="0" ver="1.32_03_05_2015" rel="1.1"/><summary>HP ProLiant DL380 Gen9 (P89) Servers firmware</summary><time file="1" build="1426000000"/>
+ <format><rpm:provides><rpm:entry name="firmware(hp:system:p89)"/></rpm:provides></format></package>
+<package type="rpm"><name>firmware-ilo5</name><version epoch="0" ver="3.21" rel="1.1"/><summary>HPE Integrated Lights-Out 5 firmware</summary><time file="1" build="1785000000"/>
+ <format><rpm:provides><rpm:entry name="firmware(hp:ilo5:ri11)"/></rpm:provides></format></package>
+<package type="rpm"><name>firmware-hdd-0a7d4aa47f</name><version epoch="0" ver="HPG5" rel="1.1"/><summary>MB6000GVYZB and MB4000GVYZA Drives firmware</summary><time file="1" build="1610000000"/>
+ <format><rpm:provides><rpm:entry name="firmware(hp:sd:sata:mb4000gvyza)"/><rpm:entry name="firmware(hp:sd:sata:mb6000gvyzb)"/><rpm:entry name="firmware(hp:sd:sata:mb4000gvyza)" flags="EQ" ver="HPG5"/></rpm:provides></format></package>
+<package type="rpm"><name>firmware-smartarray-f7c07bdbbd</name><version epoch="0" ver="3.53" rel="1.1"/><summary>HPE Smart Array P408i-p, P408i-a, E208i-a SR Gen10 firmware</summary><time file="1" build="1613000000"/>
+ <format><rpm:provides><rpm:entry name="firmware(hp:firmware:0600103c)"/></rpm:provides></format></package>
+</metadata>

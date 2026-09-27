@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Minimal Dell LC catalog for tests. SystemID 0716 = test R740, 06DB = test R630. -->
+<Manifest baseLocation="downloads.dell.com" dateTime="2026-09-01T00:00:00" version="26.09.01" releaseID="TEST1">
+  <SoftwareComponent releaseDate="January 10, 2021" vendorVersion="2.10.2" path="F/BIOS_OLD_WN64_2.10.2.EXE">
+    <Name><Display lang="en">PowerEdge BIOS R740 2.10.2</Display></Name>
+    <ComponentType value="BIOS"><Display lang="en">BIOS</Display></ComponentType>
+    <SupportedDevices><Device componentID="159" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+    <Criticality value="1"><Display lang="en">Recommended</Display></Criticality>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="August 01, 2021" vendorVersion="2.12.2" path="F/BIOS_MID_WN64_2.12.2.EXE">
+    <Name><Display lang="en">PowerEdge BIOS R740 2.12.2</Display></Name>
+    <ComponentType value="BIOS"><Display lang="en">BIOS</Display></ComponentType>
+    <SupportedDevices><Device componentID="159" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="June 01, 2023" vendorVersion="2.19.1" path="F/BIOS_NEW_WN64_2.19.1.EXE">
+    <Name><Display lang="en">PowerEdge BIOS R740 2.19.1</Display></Name>
+    <ComponentType value="BIOS"><Display lang="en">BIOS</Display></ComponentType>
+    <SupportedDevices><Device componentID="159" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="June 01, 2023" vendorVersion="2.19.1" path="F/BIOS_NEW_LN64_2.19.1.BIN">
+    <Name><Display lang="en">PowerEdge BIOS R740 2.19.1 (Linux)</Display></Name>
+    <ComponentType value="BIOS"><Display lang="en">BIOS</Display></ComponentType>
+    <SupportedDevices><Device componentID="159" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="January 20, 2022" vendorVersion="5.10.50.00" path="F/iDRAC_5.10.50.00.EXE">
+    <Name><Display lang="en">iDRAC 5.10.50.00</Display></Name>
+    <ComponentType value="FRMW"><Display lang="en">Firmware</Display></ComponentType>
+    <SupportedDevices><Device componentID="25227" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="January 20, 2024" vendorVersion="7.00.00.173" path="F/iDRAC_7.00.00.173.EXE">
+    <Name><Display lang="en">iDRAC 7.00.00.173</Display></Name>
+    <ComponentType value="FRMW"><Display lang="en">Firmware</Display></ComponentType>
+    <SupportedDevices><Device componentID="25227" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="August 19, 2016" vendorVersion="2.40.40.40" path="F/iDRAC_2.40.40.40.EXE">
+    <Name><Display lang="en">iDRAC 2.40.40.40</Display></Name>
+    <ComponentType value="FRMW"><Display lang="en">Firmware</Display></ComponentType>
+    <SupportedDevices><Device componentID="25227" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="06DB"><Display lang="en">R630</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="March 01, 2022" vendorVersion="51.16.0-4076" path="F/PERC_51.16.0-4076.EXE">
+    <Name><Display lang="en">PERC H740P 51.16.0-4076</Display></Name>
+    <ComponentType value="FRMW"><Display lang="en">Firmware</Display></ComponentType>
+    <SupportedDevices><Device componentID="104095" embedded="0"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="February 01, 2023" vendorVersion="51.16.0-5150" path="F/PERC_51.16.0-5150.EXE">
+    <Name><Display lang="en">PERC H740P 51.16.0-5150</Display></Name>
+    <ComponentType value="FRMW"><Display lang="en">Firmware</Display></ComponentType>
+    <SupportedDevices><Device componentID="104095" embedded="0"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="May 05, 2023" vendorVersion="22.31.6" path="F/NIC_22.31.6.EXE">
+    <Name><Display lang="en">Intel NIC 22.31.6</Display></Name>
+    <ComponentType value="FRMW"><Display lang="en">Firmware</Display></ComponentType>
+    <SupportedDevices><Device componentID="107649" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="October 10, 2022" vendorVersion="D023" path="F/Disk_D023.EXE">
+    <Name><Display lang="en">Disk D023</Display></Name>
+    <ComponentType value="FRMW"><Display lang="en">Firmware</Display></ComponentType>
+    <SupportedDevices><Device componentID="105432" embedded="0"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareComponent releaseDate="October 10, 2022" vendorVersion="30.0.1" path="F/Driver.EXE">
+    <Name><Display lang="en">A driver that must be ignored</Display></Name>
+    <ComponentType value="DRVR"><Display lang="en">Driver</Display></ComponentType>
+    <SupportedDevices><Device componentID="159" embedded="1"/></SupportedDevices>
+    <SupportedSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></SupportedSystems>
+  </SoftwareComponent>
+  <SoftwareBundle bundleID="PER740" path="PER740-WIN64.xml" vendorVersion="PER740.1">
+    <TargetSystems><Brand key="3" prefix="PE"><Model systemID="0716"><Display lang="en">R740</Display></Model></Brand></TargetSystems>
+    <Contents>
+      <Package path="BIOS_MID_WN64_2.12.2.EXE"/>
+      <Package path="iDRAC_7.00.00.173.EXE"/>
+    </Contents>
+  </SoftwareBundle>
+</Manifest>

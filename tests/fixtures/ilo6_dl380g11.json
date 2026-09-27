@@ -1,0 +1,227 @@
+{
+ "password": "secret",
+ "expand": [
+  "?$expand=."
+ ],
+ "paths": {
+  "/redfish/v1/": {
+   "@odata.id": "/redfish/v1/",
+   "Id": "RootService",
+   "RedfishVersion": "1.6.0",
+   "Product": "ProLiant DL380 Gen11",
+   "Oem": {
+    "Hpe": {
+     "Manager": [
+      {
+       "ManagerType": "iLO 5"
+      }
+     ]
+    }
+   },
+   "Systems": {
+    "@odata.id": "/redfish/v1/Systems/"
+   },
+   "Managers": {
+    "@odata.id": "/redfish/v1/Managers/"
+   },
+   "Chassis": {
+    "@odata.id": "/redfish/v1/Chassis/"
+   },
+   "Vendor": "HPE",
+   "UpdateService": {
+    "@odata.id": "/redfish/v1/UpdateService/"
+   }
+  },
+  "/redfish/v1/Systems/": {
+   "@odata.id": "/redfish/v1/Systems/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/1/": {
+   "@odata.id": "/redfish/v1/Systems/1/",
+   "Id": "1",
+   "Manufacturer": "HPE",
+   "Model": "ProLiant DL380 Gen11",
+   "SerialNumber": "CZJ3210XYZ",
+   "SKU": "868703-B21",
+   "BiosVersion": "U54 v2.16 (03/01/2024)",
+   "PowerState": "On",
+   "Status": {
+    "Health": "OK",
+    "HealthRollup": "OK",
+    "State": "Enabled"
+   },
+   "Storage": {
+    "@odata.id": "/redfish/v1/Systems/1/Storage/"
+   }
+  },
+  "/redfish/v1/Managers/": {
+   "@odata.id": "/redfish/v1/Managers/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Managers/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Managers/1/": {
+   "@odata.id": "/redfish/v1/Managers/1/",
+   "Id": "1",
+   "FirmwareVersion": "iLO 6 v1.58",
+   "Model": "iLO 6",
+   "ManagerType": "BMC"
+  },
+  "/redfish/v1/Chassis/": {
+   "@odata.id": "/redfish/v1/Chassis/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Chassis/1/"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Chassis/1/": {
+   "@odata.id": "/redfish/v1/Chassis/1/",
+   "Id": "1",
+   "Power": {
+    "@odata.id": "/redfish/v1/Chassis/1/Power/"
+   }
+  },
+  "/redfish/v1/Chassis/1/Power/": {
+   "@odata.id": "/redfish/v1/Chassis/1/Power/",
+   "PowerSupplies": [
+    {
+     "Name": "HpeServerPowerSupply",
+     "Model": "865408-B21",
+     "FirmwareVersion": "1.00",
+     "Oem": {
+      "Hpe": {
+       "BayNumber": 1
+      }
+     }
+    },
+    {
+     "Name": "HpeServerPowerSupply",
+     "Model": "865408-B21",
+     "FirmwareVersion": "1.00",
+     "Oem": {
+      "Hpe": {
+       "BayNumber": 2
+      }
+     }
+    }
+   ]
+  },
+  "/redfish/v1/UpdateService/": {
+   "@odata.id": "/redfish/v1/UpdateService/",
+   "FirmwareInventory": {
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/1/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/2/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/3/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/4/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/5/"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/6/"
+    }
+   ],
+   "Members@odata.count": 6
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/1/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/1/",
+   "Id": "1",
+   "Name": "iLO 6",
+   "Version": "1.58 Mar 25 2024",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/2/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/2/",
+   "Id": "2",
+   "Name": "System ROM",
+   "Version": "U54 v2.16 (03/01/2024)",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/3/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/3/",
+   "Id": "3",
+   "Name": "System Programmable Logic Device",
+   "Version": "0x12",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/4/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/4/",
+   "Id": "4",
+   "Name": "Server Platform Services (SPS) Firmware",
+   "Version": "06.01.04.089.0",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "System Board"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/5/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/5/",
+   "Id": "5",
+   "Name": "HPE MR408i-o Gen11",
+   "Version": "52.26.3-5379",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "OCP 3.0 Slot 15"
+    }
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/6/": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/6/",
+   "Id": "6",
+   "Name": "Broadcom BCM57414 10/25GbE 2p SFP28 OCP3 Adapter",
+   "Version": "229.1.123.0",
+   "Updateable": true,
+   "Oem": {
+    "Hpe": {
+     "DeviceContext": "OCP 3.0 Slot 14"
+    }
+   }
+  },
+  "/redfish/v1/Systems/1/Storage/": {
+   "@odata.id": "/redfish/v1/Systems/1/Storage/",
+   "Members": [],
+   "Members@odata.count": 0
+  }
+ }
+}

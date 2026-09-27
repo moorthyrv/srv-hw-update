@@ -1,0 +1,8 @@
+dell:
+  "PowerEdge R740":
+    BIOS: "2.12.2"
+    "25227": "7.00.00.173"
+hpe:
+  "ProLiant DL380 Gen10":
+    BIOS: "3.40"
+    "P408i-a": "3.53"

@@ -1,0 +1,262 @@
+{
+ "password": "secret",
+ "expand": [
+  "?$expand=*($levels=1)"
+ ],
+ "paths": {
+  "/redfish/v1/": {
+   "@odata.id": "/redfish/v1",
+   "Id": "RootService",
+   "RedfishVersion": "1.11.0",
+   "Vendor": "Dell",
+   "Product": "Integrated Dell Remote Access Controller",
+   "Oem": {
+    "Dell": {
+     "@odata.type": "#DellServiceRoot.v1_0_0.DellServiceRoot",
+     "ServiceTag": "ABC1234"
+    }
+   },
+   "Systems": {
+    "@odata.id": "/redfish/v1/Systems"
+   },
+   "Managers": {
+    "@odata.id": "/redfish/v1/Managers"
+   },
+   "Chassis": {
+    "@odata.id": "/redfish/v1/Chassis"
+   },
+   "UpdateService": {
+    "@odata.id": "/redfish/v1/UpdateService"
+   }
+  },
+  "/redfish/v1/Systems": {
+   "@odata.id": "/redfish/v1/Systems",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Systems/System.Embedded.1"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Systems/System.Embedded.1": {
+   "@odata.id": "/redfish/v1/Systems/System.Embedded.1",
+   "Id": "System.Embedded.1",
+   "Manufacturer": "Dell Inc.",
+   "Model": "VxRail P570F",
+   "SKU": "VXR0001",
+   "SerialNumber": "CN7475ABC1234",
+   "BiosVersion": "2.12.2",
+   "PowerState": "On",
+   "Status": {
+    "Health": "OK",
+    "HealthRollup": "OK",
+    "State": "Enabled"
+   },
+   "Oem": {
+    "Dell": {
+     "DellSystem": {
+      "SystemID": 1814,
+      "SystemGeneration": "14G Monolithic",
+      "ChassisServiceTag": "VXR0001"
+     }
+    }
+   }
+  },
+  "/redfish/v1/Managers": {
+   "@odata.id": "/redfish/v1/Managers",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/Managers/iDRAC.Embedded.1"
+    }
+   ],
+   "Members@odata.count": 1
+  },
+  "/redfish/v1/Managers/iDRAC.Embedded.1": {
+   "@odata.id": "/redfish/v1/Managers/iDRAC.Embedded.1",
+   "Id": "iDRAC.Embedded.1",
+   "FirmwareVersion": "5.10.50.00",
+   "Model": "14G Monolithic",
+   "ManagerType": "BMC"
+  },
+  "/redfish/v1/UpdateService": {
+   "@odata.id": "/redfish/v1/UpdateService",
+   "FirmwareInventory": {
+    "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory",
+   "Members": [
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-159-2.12.2__BIOS.Setup.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Previous-159-2.10.2__BIOS.Setup.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-25227-5.10.50.00__iDRAC.Embedded.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Available-25227-7.00.00.173__iDRAC.Embedded.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-27763-1.0.6__CPLD.Embedded.1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-104095-51.14.0-3900__RAID.Integrated.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-107649-22.31.6__NIC.Integrated.1-1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-107649-22.31.6__NIC.Integrated.1-2-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-105432-D023__Disk.Bay.0:Enclosure.Internal.0-1:RAID.Integrated.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-4.35__Enclosure.Internal.0-1:RAID.Integrated.1-1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-00.1D.9B__PSU.Slot.1"
+    },
+    {
+     "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-101734-19.5.12__DriverPack"
+    }
+   ],
+   "Members@odata.count": 12
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-159-2.12.2__BIOS.Setup.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-159-2.12.2__BIOS.Setup.1-1",
+   "Id": "Installed-159-2.12.2__BIOS.Setup.1-1",
+   "Name": "BIOS",
+   "Version": "2.12.2",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Previous-159-2.10.2__BIOS.Setup.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Previous-159-2.10.2__BIOS.Setup.1-1",
+   "Id": "Previous-159-2.10.2__BIOS.Setup.1-1",
+   "Name": "BIOS",
+   "Version": "2.10.2",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-25227-5.10.50.00__iDRAC.Embedded.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-25227-5.10.50.00__iDRAC.Embedded.1-1",
+   "Id": "Installed-25227-5.10.50.00__iDRAC.Embedded.1-1",
+   "Name": "Integrated Dell Remote Access Controller",
+   "Version": "5.10.50.00",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Available-25227-7.00.00.173__iDRAC.Embedded.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Available-25227-7.00.00.173__iDRAC.Embedded.1-1",
+   "Id": "Available-25227-7.00.00.173__iDRAC.Embedded.1-1",
+   "Name": "Integrated Dell Remote Access Controller",
+   "Version": "7.00.00.173",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-27763-1.0.6__CPLD.Embedded.1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-27763-1.0.6__CPLD.Embedded.1",
+   "Id": "Installed-27763-1.0.6__CPLD.Embedded.1",
+   "Name": "System CPLD",
+   "Version": "1.0.6",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-104095-51.14.0-3900__RAID.Integrated.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-104095-51.14.0-3900__RAID.Integrated.1-1",
+   "Id": "Installed-104095-51.14.0-3900__RAID.Integrated.1-1",
+   "Name": "PERC H740P Mini",
+   "Version": "51.14.0-3900",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-107649-22.31.6__NIC.Integrated.1-1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-107649-22.31.6__NIC.Integrated.1-1-1",
+   "Id": "Installed-107649-22.31.6__NIC.Integrated.1-1-1",
+   "Name": "Intel(R) Ethernet 10G X710 rNDC - E4:43:4B:00:00:01",
+   "Version": "22.31.6",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-107649-22.31.6__NIC.Integrated.1-2-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-107649-22.31.6__NIC.Integrated.1-2-1",
+   "Id": "Installed-107649-22.31.6__NIC.Integrated.1-2-1",
+   "Name": "Intel(R) Ethernet 10G X710 rNDC - E4:43:4B:00:00:02",
+   "Version": "22.31.6",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-105432-D023__Disk.Bay.0:Enclosure.Internal.0-1:RAID.Integrated.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-105432-D023__Disk.Bay.0:Enclosure.Internal.0-1:RAID.Integrated.1-1",
+   "Id": "Installed-105432-D023__Disk.Bay.0:Enclosure.Internal.0-1:RAID.Integrated.1-1",
+   "Name": "Disk 0 in Backplane 1 of Integrated RAID Controller 1",
+   "Version": "D023",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-4.35__Enclosure.Internal.0-1:RAID.Integrated.1-1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-4.35__Enclosure.Internal.0-1:RAID.Integrated.1-1",
+   "Id": "Installed-0-4.35__Enclosure.Internal.0-1:RAID.Integrated.1-1",
+   "Name": "BP14G+EXP 0:1",
+   "Version": "4.35",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-00.1D.9B__PSU.Slot.1": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-0-00.1D.9B__PSU.Slot.1",
+   "Id": "Installed-0-00.1D.9B__PSU.Slot.1",
+   "Name": "PS1 Power Supply",
+   "Version": "00.1D.9B",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  },
+  "/redfish/v1/UpdateService/FirmwareInventory/Installed-101734-19.5.12__DriverPack": {
+   "@odata.id": "/redfish/v1/UpdateService/FirmwareInventory/Installed-101734-19.5.12__DriverPack",
+   "Id": "Installed-101734-19.5.12__DriverPack",
+   "Name": "OS Driver Pack",
+   "Version": "19.5.12",
+   "Updateable": true,
+   "Status": {
+    "Health": "OK",
+    "State": "Enabled"
+   }
+  }
+ }
+}
