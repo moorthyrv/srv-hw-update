@@ -1,0 +1,20 @@
+# fwtool settings. Every key is optional; defaults shown.
+target_policy: n-1          # latest | n-1  - compliance target when no baseline applies
+workers: 25                 # parallel BMC connections
+timeout: 30                 # per-request read timeout (seconds)
+connect_timeout: 10
+retries: 3                  # retries on timeout / 429 / 5xx, exponential backoff
+verify_tls: false           # true, or a path to a CA bundle
+collect_hpe_drives: true    # one extra request per drive on HPE; set false to speed up large runs
+dell_catalog_url: https://downloads.dell.com/catalog/Catalog.xml.gz
+dell_catalog_max_age_days: 7
+cache_dir: cache
+
+scoring:
+  # Points per out-of-date component = weight x (1 + age in years, capped at age_cap_years)
+  weights: {BIOS: 5, BMC: 5, CPLD: 3, Storage: 3, NIC: 2, Drive: 1, PSU: 1, Other: 1}
+  age_cap_years: 3
+  unknown_age_years: 1        # age assumed when a behind component has no release date
+  unknown_factor: 0.5         # an 'unknown' component adds weight x 0.5
+  noncompliant_multiplier: 1.5  # below target/baseline multiplies the points
+  environment_multipliers: {}   # e.g. {prod: 1.5, lab: 0.5}

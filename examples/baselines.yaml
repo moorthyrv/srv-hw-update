@@ -1,0 +1,19 @@
+# Per-model target versions. Keys under a model:
+#   a category (BIOS, BMC, CPLD, Storage, NIC, Drive, PSU, Other) - applies to every component in it
+#   a Dell component ID (digits)                                    - e.g. "25227" = iDRAC
+#   anything else is a regex matched against the component name
+# Models match ignoring "PowerEdge", case and spaces. "gen:<generation>" is a fallback for a whole generation.
+dell:
+  "PowerEdge R740":
+    BIOS: "2.19.1"
+    BMC: "7.00.00.173"
+    "PERC H740P": "51.16.0-5150"
+  "gen:16G":
+    BMC: "7.10.70.00"
+hpe:
+  "ProLiant DL380 Gen10":
+    BIOS: "3.40"
+    BMC: "3.10"
+    "P408i-a": "7.43"
+  "gen:Gen11":
+    BMC: "1.62"
